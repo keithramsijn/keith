@@ -116,7 +116,7 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-3 text-center">
                 <div class="p-3 bg-sky-50 rounded-xl border border-sky-100">
                     <span class="block font-bold text-sky-900">Maandag</span>
-                    <span class="text-sm font-semibold text-gray-600">4:00 PM</span>
+                    <span class="text-sm font-semibold text-gray-600">3:00 PM – 4:00 PM</span>
                 </div>
                 <div class="p-3 bg-sky-50 rounded-xl border border-sky-100">
                     <span class="block font-bold text-sky-900">Dinsdag</span>
@@ -150,4 +150,152 @@
                     </button>
                     <button type="button" onclick="selectVehicle(5, this)" class="v-btn border-2 border-gray-200 text-gray-700 font-bold p-3 rounded-xl text-center cursor-pointer">
                         SUV (+Afl. 5)
-                    </
+                    </button>
+                    <button type="button" onclick="selectVehicle(10, this)" class="v-btn border-2 border-gray-200 text-gray-700 font-bold p-3 rounded-xl text-center cursor-pointer">
+                        Truck (+Afl. 10)
+                    </button>
+                </div>
+
+                <div class="bg-sky-900 text-white p-4 rounded-xl flex justify-between items-center">
+                    <div>
+                        <span class="text-xs text-sky-200 block">Total Inside & Outside Price:</span>
+                        <span class="text-3xl font-black" id="total-price">Afl. 35,-</span>
+                    </div>
+                    <a href="#book" class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-lg transition">
+                        Select Slot
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Form Section -->
+    <section id="book" class="py-12 bg-white relative z-10">
+        <div class="max-w-xl mx-auto px-4">
+            <h3 class="text-3xl font-bold text-center text-sky-900 mb-2">Book Your Appointment</h3>
+            <p class="text-center text-gray-500 mb-6">Pick a date and available time slot below</p>
+
+            <form onsubmit="sendBookingEmail(event)" id="bookingForm" class="space-y-4">
+                <div>
+                    <label class="block font-semibold text-gray-700 mb-1">Full Name</label>
+                    <input type="text" id="clientName" required class="w-full border border-gray-300 rounded-lg p-3 text-gray-800 focus:ring-2 focus:ring-sky-500" placeholder="Your Name">
+                </div>
+                <div>
+                    <label class="block font-semibold text-gray-700 mb-1">Phone Number</label>
+                    <input type="tel" id="clientPhone" required class="w-full border border-gray-300 rounded-lg p-3 text-gray-800 focus:ring-2 focus:ring-sky-500" placeholder="+297 000 0000">
+                </div>
+                <div>
+                    <label class="block font-semibold text-gray-700 mb-1">Select Date</label>
+                    <input type="date" id="datePicker" onchange="updateTimeSlots()" required class="w-full border border-gray-300 rounded-lg p-3 text-gray-800 focus:ring-2 focus:ring-sky-500 cursor-pointer">
+                </div>
+                <div>
+                    <label class="block font-semibold text-gray-700 mb-1">Select Time Slot</label>
+                    <select id="timeSlot" required class="w-full border border-gray-300 rounded-lg p-3 text-gray-800 focus:ring-2 focus:ring-sky-500 cursor-pointer">
+                        <option value="">-- Click to select a date above first --</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-3.5 rounded-lg text-lg shadow-md transition cursor-pointer">
+                    Confirm & Send Booking to Keith
+                </button>
+            </form>
+            <div id="successMsg" class="hidden mt-4 p-4 bg-green-100 text-green-800 font-bold rounded-lg text-center">
+                🎉 Slot reserved! Opening email to send details to Keith...
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-sky-950 text-white py-8 border-t border-sky-800 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h4 class="text-xl font-bold mb-1">KEITH'S CAR WASH</h4>
+            <p class="text-sky-300 text-sm mb-4">Owner: Keith • Professional Car Care in Aruba</p>
+            <p class="text-xs text-sky-400">&copy; 2026 keithcarwashshine.com. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Interactive Scripts -->
+    <script>
+        let extraCharge = 0;
+
+        const timeSchedules = {
+            1: ["3:00 PM", "3:30 PM", "4:00 PM"], // Monday (3:00 PM to 4:00 PM)
+            2: ["2:30 PM", "3:00 PM", "3:30 PM", "4:00 PM", "4:30 PM", "5:00 PM"], // Tuesday
+            3: ["2:30 PM", "3:00 PM", "3:30 PM", "4:00 PM"], // Wednesday
+            4: ["2:15 PM", "2:45 PM", "3:15 PM", "3:45 PM", "4:00 PM"], // Thursday
+            5: ["1:30 PM", "2:00 PM", "2:30 PM", "3:00 PM", "3:30 PM", "4:00 PM", "4:30 PM", "5:00 PM"] // Friday
+        };
+
+        function selectVehicle(addPrice, btnElement) {
+            extraCharge = addPrice;
+            document.querySelectorAll('.v-btn').forEach(b => {
+                b.classList.remove('border-sky-500', 'bg-sky-50', 'text-sky-900');
+                b.classList.add('border-gray-200', 'text-gray-700');
+            });
+            btnElement.classList.add('border-sky-500', 'bg-sky-50', 'text-sky-900');
+            btnElement.classList.remove('border-gray-200', 'text-gray-700');
+            
+            let total = 35 + extraCharge;
+            document.getElementById('total-price').innerText = "Afl. " + total + ",-";
+        }
+
+        function updateTimeSlots() {
+            const dateVal = document.getElementById('datePicker').value;
+            const slotSelect = document.getElementById('timeSlot');
+            slotSelect.innerHTML = '';
+
+            if (!dateVal) return;
+
+            const selectedDate = new Date(dateVal + 'T00:00:00');
+            const dayOfWeek = selectedDate.getDay();
+
+            const booked = JSON.parse(localStorage.getItem('booked_slots') || '{}');
+            const availableSlots = timeSchedules[dayOfWeek];
+
+            if (!availableSlots) {
+                slotSelect.innerHTML = '<option value="">Closed on weekends (Saturday / Sunday)</option>';
+                return;
+            }
+
+            availableSlots.forEach(slot => {
+                const slotKey = `${dateVal}_${slot}`;
+                const option = document.createElement('option');
+                option.value = slot;
+
+                if (booked[slotKey]) {
+                    option.text = `${slot} - (ALREADY BOOKED)`;
+                    option.disabled = true;
+                } else {
+                    option.text = slot;
+                }
+                slotSelect.appendChild(option);
+            });
+        }
+
+        function sendBookingEmail(e) {
+            e.preventDefault();
+            const name = document.getElementById('clientName').value;
+            const phone = document.getElementById('clientPhone').value;
+            const date = document.getElementById('datePicker').value;
+            const slot = document.getElementById('timeSlot').value;
+            const price = document.getElementById('total-price').innerText;
+
+            const slotKey = `${date}_${slot}`;
+            let booked = JSON.parse(localStorage.getItem('booked_slots') || '{}');
+            booked[slotKey] = true;
+            localStorage.setItem('booked_slots', JSON.stringify(booked));
+
+            // Sends directly to Keith's email address
+            const ownerEmail = "keithramsijn@gmail.com";
+            const subject = encodeURIComponent("New Car Wash Booking: " + name);
+            const body = encodeURIComponent(`Hi Keith,\n\nYou have a new car wash booking!\n\nName: ${name}\nPhone: ${phone}\nDate: ${date}\nTime: ${slot}\nEstimated Total: ${price}\n\nSee you soon!`);
+
+            document.getElementById('successMsg').classList.remove('hidden');
+
+            setTimeout(() => {
+                window.location.href = `mailto:${ownerEmail}?subject=${subject}&body=${body}`;
+            }, 800);
+        }
+    </script>
+</body>
+</html>

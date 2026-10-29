@@ -1,0 +1,238 @@
+Here is the complete, single-file HTML/CSS/JS code for your **Keith's Car Wash** website.
+
+### Instructions to Use:
+
+1. Copy all the code inside the box below.
+2. Open a text editor (like Notepad on Windows or TextEdit on Mac) and paste the code.
+3. Save the file with the exact name **`index.html`**.
+4. You can open this file directly in your web browser to view it, or upload it to **Netlify Drop** / **GitHub Pages** for a free live website!
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keith's Car Wash | $35 Inside & Outside Special</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .hero-bg {
+            background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+        }
+        .bubble {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            animation: float 6s infinite ease-in-out;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-20px) scale(1.05); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans text-gray-800">
+
+    <!-- Header / Navbar -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <div class="bg-sky-600 text-white p-2 rounded-full shadow">
+                    <i class="fa-solid fa-car-wash fa-lg"></i>
+                </div>
+                <div>
+                    <h1 class="text-xl font-black text-sky-900 tracking-tight">KEITH'S CAR WASH</h1>
+                    <p class="text-xs font-bold text-orange-500 uppercase tracking-widest">Splash & Shine Auto Care</p>
+                </div>
+            </div>
+            <nav class="hidden md:flex space-x-6 font-semibold text-gray-700">
+                <a href="#special" class="hover:text-sky-600 transition"> Special Deal</a>
+                <a href="#services" class="hover:text-sky-600 transition">Services</a>
+                <a href="#estimator" class="hover:text-sky-600 transition">Price Estimator</a>
+                <a href="#about" class="hover:text-sky-600 transition">About Keith</a>
+            </nav>
+            <a href="#book" class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-5 rounded-full shadow transition transform hover:scale-105">
+                Book Now
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Banner Special -->
+    <section id="special" class="hero-bg text-white relative overflow-hidden py-16 px-4">
+        <!-- Decorative Bubbles -->
+        <div class="bubble w-16 h-16 top-10 left-10"></div>
+        <div class="bubble w-24 h-24 bottom-10 right-12"></div>
+        <div class="bubble w-12 h-12 top-1/2 left-1/4"></div>
+
+        <div class="max-w-5xl mx-auto text-center relative z-10">
+            <span class="bg-yellow-400 text-sky-950 font-extrabold px-4 py-1.5 rounded-full text-sm uppercase tracking-wider shadow">
+                Owner Operated • Fast & Professional
+            </span>
+            <h2 class="text-4xl md:text-6xl font-black mt-4 mb-2 tracking-tight">
+                INSIDE & OUTSIDE CAR WASH
+            </h2>
+            <div class="inline-block bg-orange-500 text-white font-black text-5xl md:text-7xl px-8 py-3 rounded-2xl shadow-2xl my-4 border-4 border-white transform -rotate-1">
+                $35 <span class="text-2xl md:text-3xl font-bold">ONLY</span>
+            </div>
+            <p class="text-xl md:text-2xl font-medium text-sky-100 max-w-2xl mx-auto mt-2">
+                Get your vehicle looking brand new with Keith's Total Cleaning Package!
+            </p>
+
+            <!-- Feature Checkmarks -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 max-w-3xl mx-auto mt-8 text-left">
+                <div class="bg-white/10 backdrop-blur-md p-3 rounded-xl border border-white/20 flex items-center space-x-3">
+                    <i class="fa-solid fa-circle-check text-yellow-400 text-xl"></i>
+                    <span class="font-semibold">Full Exterior Wash & Dry</span>
+                </div>
+                <div class="bg-white/10 backdrop-blur-md p-3 rounded-xl border border-white/20 flex items-center space-x-3">
+                    <i class="fa-solid fa-circle-check text-yellow-400 text-xl"></i>
+                    <span class="font-semibold">Interior Vacuum & Dusting</span>
+                </div>
+                <div class="bg-white/10 backdrop-blur-md p-3 rounded-xl border border-white/20 flex items-center space-x-3">
+                    <i class="fa-solid fa-circle-check text-yellow-400 text-xl"></i>
+                    <span class="font-semibold">Tire & Wheel Shine</span>
+                </div>
+                <div class="bg-white/10 backdrop-blur-md p-3 rounded-xl border border-white/20 flex items-center space-x-3">
+                    <i class="fa-solid fa-circle-check text-yellow-400 text-xl"></i>
+                    <span class="font-semibold">Windows Cleaned</span>
+                </div>
+                <div class="bg-white/10 backdrop-blur-md p-3 rounded-xl border border-white/20 flex items-center space-x-3">
+                    <i class="fa-solid fa-circle-check text-yellow-400 text-xl"></i>
+                    <span class="font-semibold">Dashboard Polish</span>
+                </div>
+                <div class="bg-white/10 backdrop-blur-md p-3 rounded-xl border border-white/20 flex items-center space-x-3">
+                    <i class="fa-solid fa-circle-check text-yellow-400 text-xl"></i>
+                    <span class="font-semibold">Hand Finishing Touch</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Keith Section -->
+    <section id="about" class="py-12 bg-white">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h3 class="text-3xl font-bold text-sky-900 mb-3">Meet Owner Keith</h3>
+            <p class="text-gray-600 text-lg leading-relaxed">
+                At Keith’s Car Wash, we take pride in delivering meticulous care for every vehicle that drives onto our lot. Keith ensures that every $35 Total Package service meets the highest standard of cleanliness, speed, and customer satisfaction.
+            </p>
+        </div>
+    </section>
+
+    <!-- Interactive Price Estimator -->
+    <section id="estimator" class="py-12 bg-sky-50">
+        <div class="max-w-3xl mx-auto px-4">
+            <h3 class="text-3xl font-bold text-center text-sky-900 mb-8">Service Estimator</h3>
+            <div class="bg-white p-6 md:p-8 rounded-2xl shadow-md border border-sky-100">
+                <div class="mb-6">
+                    <label class="block font-bold text-gray-700 mb-2">Select Vehicle Type:</label>
+                    <div class="grid grid-cols-3 gap-3">
+                        <button onclick="setVehicle('Sedan', 0)" id="btn-sedan" class="vehicle-btn active border-2 border-sky-500 bg-sky-50 text-sky-900 font-bold p-3 rounded-xl text-center">
+                            Sedan / Coupe
+                        </button>
+                        <button onclick="setVehicle('SUV', 5)" id="btn-suv" class="vehicle-btn border-2 border-gray-200 text-gray-700 font-bold p-3 rounded-xl text-center">
+                            SUV / Crossover (+$5)
+                        </button>
+                        <button onclick="setVehicle('Truck', 10)" id="btn-truck" class="vehicle-btn border-2 border-gray-200 text-gray-700 font-bold p-3 rounded-xl text-center">
+                            Truck / Van (+$10)
+                        </button>
+                    </div>
+                </div>
+
+                <div class="mb-6">
+                    <label class="block font-bold text-gray-700 mb-2">Optional Add-ons:</label>
+                    <div class="space-y-2">
+                        <label class="flex items-center space-x-3 p-3 border rounded-xl cursor-pointer hover:bg-gray-50">
+                            <input type="checkbox" id="wax" onchange="calculateTotal()" class="w-5 h-5 text-sky-600 rounded">
+                            <span class="font-medium">Hand Wax & Polish (+$15)</span>
+                        </label>
+                        <label class="flex items-center space-x-3 p-3 border rounded-xl cursor-pointer hover:bg-gray-50">
+                            <input type="checkbox" id="mats" onchange="calculateTotal()" class="w-5 h-5 text-sky-600 rounded">
+                            <span class="font-medium">Deep Mat Shampoo (+$10)</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="bg-sky-900 text-white p-4 rounded-xl flex justify-between items-center">
+                    <div>
+                        <span class="text-sm text-sky-200 block">Total Estimate:</span>
+                        <span class="text-3xl font-black" id="total-price">$35</span>
+                    </div>
+                    <a href="#book" class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded-lg transition">
+                        Select & Book
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Form -->
+    <section id="book" class="py-12 bg-white">
+        <div class="max-w-xl mx-auto px-4">
+            <h3 class="text-3xl font-bold text-center text-sky-900 mb-2">Book Your Wash</h3>
+            <p class="text-center text-gray-500 mb-8">Save time by reserving your spot online!</p>
+            <form onsubmit="handleBooking(event)" class="space-y-4">
+                <div>
+                    <label class="block font-semibold text-gray-700">Full Name</label>
+                    <input type="text" required class="w-full border rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-sky-500" placeholder="Keith Smith">
+                </div>
+                <div>
+                    <label class="block font-semibold text-gray-700">Phone Number</label>
+                    <input type="tel" required class="w-full border rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-sky-500" placeholder="(555) 000-0000">
+                </div>
+                <div>
+                    <label class="block font-semibold text-gray-700">Preferred Date & Time</label>
+                    <input type="datetime-local" required class="w-full border rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-sky-500">
+                </div>
+                <button type="submit" class="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 rounded-lg text-lg shadow-md transition">
+                    Confirm Booking
+                </button>
+            </form>
+            <div id="booking-alert" class="hidden mt-4 p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg text-center font-bold">
+                🎉 Booking Request Sent! Keith will see you soon.
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-sky-950 text-white py-8 border-t border-sky-800">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h4 class="text-xl font-bold mb-2">KEITH'S CAR WASH</h4>
+            <p class="text-sky-300 text-sm mb-4">Open Daily • Fast & Professional Service</p>
+            <p class="text-xs text-sky-400">&copy; 2026 Keith's Car Wash (keithcarwashshine.com). All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        let vehicleExtra = 0;
+
+        function setVehicle(type, extra) {
+            vehicleExtra = extra;
+            document.querySelectorAll('.vehicle-btn').forEach(btn => {
+                btn.classList.remove('border-sky-500', 'bg-sky-50', 'text-sky-900');
+                btn.classList.add('border-gray-200', 'text-gray-700');
+            });
+            event.target.classList.add('border-sky-500', 'bg-sky-50', 'text-sky-900');
+            event.target.classList.remove('border-gray-200', 'text-gray-700');
+            calculateTotal();
+        }
+
+        function calculateTotal() {
+            let basePrice = 35;
+            let wax = document.getElementById('wax').checked ? 15 : 0;
+            let mats = document.getElementById('mats').checked ? 10 : 0;
+            let total = basePrice + vehicleExtra + wax + mats;
+            document.getElementById('total-price').innerText = '$' + total;
+        }
+
+        function handleBooking(e) {
+            e.preventDefault();
+            document.getElementById('booking-alert').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
+
+```
